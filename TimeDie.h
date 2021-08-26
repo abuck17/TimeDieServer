@@ -8,12 +8,17 @@
 class TimeDie {
 
   private:
-    Accelerometer accelerometer;
-    Button button;
-    Storage storage;
+    Accelerometer *accelerometer;
+    Button *button;
+    Storage *storage;
+
+    bool connection = false;
+
+    void searchCentral();
 
   public:
     TimeDie();
+    ~TimeDie();
     void operate();
     
 };

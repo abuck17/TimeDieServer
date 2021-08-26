@@ -1,18 +1,42 @@
 #include "TimeDie.h"
 
-#include "Accelerometer.h"
-#include "Button.h"
-#include "Storage.h"
-
 TimeDie::TimeDie() {
 
-  accelerometer = Accelerometer();
-  button = Button();
-  storage = Storage();
+  accelerometer = new Accelerometer();
+  button = new Button();
+  storage = new Storage();
+  
+}
+
+TimeDie::~TimeDie() {
+  
+  delete accelerometer;
+  delete button;
+  delete storage;
+}
+
+void TimeDie::searchCentral() {
   
 }
 
 void TimeDie::operate() {
 
+  float durationThreshold = 3.00; // Seconds
+
+  while (true) {
+
+    // If Bluetooth search is requested
+    if (button->isPressed(durationThreshold)) {
+      
+      // Search for a central to connect too
+      searchCentral();
+      
+    // If connected to a central  
+    } else if (connection) {
+
+      
+    }
+    
+  }
   
 }

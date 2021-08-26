@@ -5,6 +5,7 @@ class Button {
     
   public:
     Button();
+    bool isPressed(float durationThreshold);
     
 };
 
