@@ -2,18 +2,24 @@
 
 Accelerometer::Accelerometer() {
 
-  // If the arduino has a accelerometer
-  if (!IMU.accelerationAvailable()) {
-    // TODO: Need to handle this error
-    Serial.print("Error! -> Acceleromter.cpp");
+  if (!IMU.begin()) {
+    Serial.println("Failed to initialize IMU!");
+    while (true) { };
   }
-  
 }
 
-// Return if the read was successful
+//Do we need a destructor to end the IMU?
+
+// Return if data was successfully updated
 bool Accelerometer::updateData() {
-  // Read accelerometer data
-  return IMU.readAcceleration(x, y, z);  
+  
+  // Read accelerometer data if available
+  if (IMU.accelerationAvailable()) {
+    return IMU.readAcceleration(x, y, z);  
+  } else {
+    Serial.println("IMU accelerometer not available!");
+    return 0;
+  }
 }
 
 float Accelerometer::getXData() {

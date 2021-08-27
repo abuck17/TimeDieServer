@@ -15,6 +15,7 @@ class TimeDie {
     bool connection = false;
 
     void searchCentral();
+    void sendData();
 
   public:
     TimeDie();

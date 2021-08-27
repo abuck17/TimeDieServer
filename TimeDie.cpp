@@ -19,6 +19,10 @@ void TimeDie::searchCentral() {
   
 }
 
+void TimeDie::sendData() {
+  
+}
+
 void TimeDie::operate() {
 
   float durationThreshold = 3.00; // Seconds
@@ -34,6 +38,8 @@ void TimeDie::operate() {
     // If connected to a central  
     } else if (connection) {
 
+      // Send position data to central
+      sendData();
       
     }
     
