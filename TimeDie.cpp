@@ -6,7 +6,7 @@ TimeDie::TimeDie() {
   button = new Button();
   storage = new Storage();
 
-  config = new IniFile("config.ini")
+  config = new IniFile("config.ini");
   
 }
 
