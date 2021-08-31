@@ -1,11 +1,23 @@
 #ifndef MY_BUTTON_H
 #define MY_BUTTON_H
-s
+
+#include <Arduino.h>
+
 class Button {
+
+  private:
+    int pinNumber;
+  
+    int buttonState;
+    int startTime;
+    int endTime;
+    int pressedTime;
+  
+    int getState();
     
   public:
-    Button();
-    bool isPressed(float durationThreshold);
+    Button(int buttonPin);
+    bool isPressed(int durationThreshold);
     
 };
 

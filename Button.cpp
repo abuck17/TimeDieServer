@@ -1,9 +1,35 @@
 #include "Button.h"
 
-Button::Button() {
+Button::Button(int buttonPin) {
+
+  pinNumber = buttonPin;
 
 }
 
-bool Button::isPressed(float durationThreshold) {
+int Button::getState() {
+  return digitalRead(pinNumber);
+}
 
+bool Button::isPressed(int durationThreshold) {
+
+  if (getState() == HIGH) {
+    
+    startTime = millis();
+    
+    while (true) {
+      if (getState() == LOW) {
+        break;
+      }
+    }
+    
+    endTime = millis();
+    
+    pressedTime = endTime - startTime;
+    
+    if (pressedTime >= durationThreshold) {
+      return true;
+    }
+  } 
+  
+  return false;
 }

@@ -2,11 +2,12 @@
 
 TimeDie::TimeDie() {
 
-  accelerometer = new Accelerometer();
-  button = new Button();
-  storage = new Storage();
-
   config = new IniFile("config.ini");
+
+  accelerometer = new Accelerometer();
+  // TODO: Update to use pin defined in configuration file
+  button = new Button(1);
+  storage = new Storage();
   
 }
 
@@ -29,7 +30,7 @@ void TimeDie::sendData() {
 
 void TimeDie::operate() {
 
-  float durationThreshold = 3.00; // Seconds
+  float durationThreshold = 3000; // Milliseconds
 
   while (true) {
 
