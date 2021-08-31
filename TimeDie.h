@@ -5,12 +5,16 @@
 #include "Button.h"
 #include "Storage.h"
 
+#include <IniFile.h>
+
 class TimeDie {
 
   private:
     Accelerometer *accelerometer;
     Button *button;
     Storage *storage;
+
+    IniFile *config;
 
     bool connection = false;
 

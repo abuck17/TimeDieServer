@@ -5,6 +5,8 @@ TimeDie::TimeDie() {
   accelerometer = new Accelerometer();
   button = new Button();
   storage = new Storage();
+
+  config = new IniFile("config.ini")
   
 }
 
@@ -13,6 +15,8 @@ TimeDie::~TimeDie() {
   delete accelerometer;
   delete button;
   delete storage;
+
+  delete config;
 }
 
 void TimeDie::searchCentral() {
