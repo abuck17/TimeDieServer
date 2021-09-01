@@ -2,6 +2,7 @@
 #define MY_TIMEDIE_H
 
 #include "Config.h"
+#include "Central.h"
 #include "Accelerometer.h"
 #include "Button.h"
 #include "Storage.h"
@@ -14,7 +15,7 @@ class TimeDie {
 
     Config *config;
 
-    int bluetoothSyncButtonPressTime;
+    Central *central;
 
     Accelerometer *accelerometer;
     Button *button;

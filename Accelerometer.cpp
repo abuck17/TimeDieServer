@@ -4,11 +4,9 @@ Accelerometer::Accelerometer() {
 
   if (!IMU.begin()) {
     Serial.println("Failed to initialize IMU!");
-    while (true) { };
+    while (true) { }
   }
 }
-
-//Do we need a destructor to end the IMU?
 
 // Return if data was successfully updated
 bool Accelerometer::updateData() {
@@ -18,7 +16,7 @@ bool Accelerometer::updateData() {
     return IMU.readAcceleration(x, y, z);  
   } else {
     Serial.println("IMU accelerometer not available!");
-    return 0;
+    while (true) { }
   }
 }
 
