@@ -7,6 +7,7 @@ class Button {
 
   private:
     int pinNumber;
+    int durationThreshold;
   
     int buttonState;
     int startTime;
@@ -16,8 +17,8 @@ class Button {
     int getState();
     
   public:
-    Button(int buttonPin);
-    bool isPressed(int durationThreshold);
+    Button(int buttonPin, int timePressed);
+    bool isPressed();
     
 };
 

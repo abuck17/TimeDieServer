@@ -2,22 +2,25 @@
 
 TimeDie::TimeDie() {
 
-  config = new IniFile("config.ini");
-
+  config = new Config();
+  
   accelerometer = new Accelerometer();
   // TODO: Update to use pin defined in configuration file
-  button = new Button(1);
+  button = new Button(std::stoi(config->getField("BluetoothSyncButton","Pin")),
+    std::stoi(config->getField("BluetoothSyncButton","PressTime")));
   storage = new Storage();
+
   
 }
 
 TimeDie::~TimeDie() {
-  
+
+  delete config;
+    
   delete accelerometer;
   delete button;
   delete storage;
 
-  delete config;
 }
 
 void TimeDie::searchCentral() {
@@ -30,12 +33,10 @@ void TimeDie::sendData() {
 
 void TimeDie::operate() {
 
-  float durationThreshold = 3000; // Milliseconds
-
   while (true) {
 
     // If Bluetooth search is requested
-    if (button->isPressed(durationThreshold)) {
+    if (button->isPressed()) {
       
       // Search for a central to connect too
       searchCentral();

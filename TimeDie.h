@@ -1,20 +1,24 @@
 #ifndef MY_TIMEDIE_H
 #define MY_TIMEDIE_H
 
+#include "Config.h"
 #include "Accelerometer.h"
 #include "Button.h"
 #include "Storage.h"
 
-#include <IniFile.h>
+#include <string>
 
 class TimeDie {
 
   private:
+
+    Config *config;
+
+    int bluetoothSyncButtonPressTime;
+
     Accelerometer *accelerometer;
     Button *button;
     Storage *storage;
-
-    IniFile *config;
 
     bool connection = false;
 
