@@ -1,14 +1,19 @@
 #ifndef MY_STORAGE_H
 #define MY_STORAGE_H
 
+#include "SD.h"
+
 #include "Accelerometer.h"
 
 #include <string>
 
 class Storage {
 
+  private:
+    int pinNumber;
+
   public:
-    Storage();
+    Storage(int storagePin);
     bool isDataStored(std::string ID);
     bool wasConnectionDropped();
     void storeData(Accelerometer *accelerometer);

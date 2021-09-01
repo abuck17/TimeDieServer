@@ -16,7 +16,7 @@ TimeDie::TimeDie() {
     std::stoi(config->getField("BluetoothSyncButton","PressTime")));
   
   // SD Card
-  storage = new Storage();
+  storage = new Storage(std::stoi(config->getField("SDCard","Pin")));
 
 }
 
