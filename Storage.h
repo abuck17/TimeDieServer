@@ -1,6 +1,7 @@
 #ifndef MY_STORAGE_H
 #define MY_STORAGE_H
 
+#include "SPI.h"
 #include "SD.h"
 
 #include "Accelerometer.h"

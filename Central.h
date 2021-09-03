@@ -12,7 +12,7 @@ class Central {
     Central();
     void searchCentral();
     bool isConnected();
-    std::string getID();
+    std::string getAddress();
     void sendData(Storage *storage);
     void sendData(Accelerometer *accelerometer);
     

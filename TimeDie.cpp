@@ -46,7 +46,7 @@ void TimeDie::operate() {
     } else if (central->isConnected()) {
 
       // If there is data is stored for the connected central
-      if (storage->isDataStored(central->getID())) {
+      if (storage->isDataStored(central->getAddress())) {
 
         // Flush data from storage       
         central->sendData(storage);

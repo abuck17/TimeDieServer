@@ -12,7 +12,7 @@ bool Central::isConnected() {
 
 }
 
-std::string Central::getID() {
+std::string Central::getAddress() {
   
 }
 
