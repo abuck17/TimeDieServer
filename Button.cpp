@@ -18,19 +18,17 @@ bool Button::isPressed() {
     startTime = millis();
     
     while (true) {
-      if (getState() == LOW) {
-        break;
+      pressedTime = millis() - startTime;
+      if (pressedTime >= durationThreshold) {
+        Serial.println("Button::isPressed -> True");
+        return true;
+      } else if (getState() == LOW) {
+        Serial.println("Button::isPressed -> False");
+        return false;
       }
     }
-    
-    endTime = millis();
-    
-    pressedTime = endTime - startTime;
-    
-    if (pressedTime >= durationThreshold) {
-      return true;
-    }
-  } 
-  
-  return false;
+  } else {
+    Serial.println("Button::isPressed -> True");
+    return false;
+  }
 }

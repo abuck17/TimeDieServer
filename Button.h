@@ -9,9 +9,7 @@ class Button {
     int pinNumber;
     int durationThreshold;
   
-    int buttonState;
     int startTime;
-    int endTime;
     int pressedTime;
   
     int getState();
