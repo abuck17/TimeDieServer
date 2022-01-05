@@ -1,9 +1,10 @@
 #include "Button.h"
 
-Button::Button(int buttonPin, int timePressed) {
+Button::Button(int buttonPin) {
 
   pinNumber = buttonPin;
-  durationThreshold = timePressed;
+
+  pinMode(pinNumber, INPUT_PULLUP);
 
 }
 
@@ -11,9 +12,9 @@ int Button::getState() {
   return digitalRead(pinNumber);
 }
 
-bool Button::isPressed() {
+bool Button::isPressed(int durationThreshold) {
 
-  if (getState() == HIGH) {
+  if (getState() == LOW) {
     
     startTime = millis();
     
@@ -22,13 +23,13 @@ bool Button::isPressed() {
       if (pressedTime >= durationThreshold) {
         Serial.println("Button::isPressed -> True");
         return true;
-      } else if (getState() == LOW) {
+      } else if (getState() == HIGH) {
         Serial.println("Button::isPressed -> False");
         return false;
       }
     }
   } else {
-    Serial.println("Button::isPressed -> True");
+    Serial.println("Button::isPressed -> False");
     return false;
   }
 }

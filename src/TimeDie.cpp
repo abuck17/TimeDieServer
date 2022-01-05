@@ -12,11 +12,10 @@ TimeDie::TimeDie() {
   accelerometer = new Accelerometer();
 
   // Bluetooth Sync Button
-  button = new Button(std::stoi(config->getField("BluetoothSyncButton","Pin")),
-    std::stoi(config->getField("BluetoothSyncButton","PressTime")));
+  button = new Button(config->getField("BluetoothSyncButton","Pin").toInt());
   
   // SD Card
-  storage = new Storage(std::stoi(config->getField("SDCard","Pin")));
+  storage = new Storage(config->getField("SDCard","Pin").toInt());
 
 }
 
@@ -37,7 +36,7 @@ void TimeDie::operate() {
   while (true) {
 
     // If Bluetooth search is requested
-    if (button->isPressed()) {
+    if (button->isPressed(3000)) {
       
       // Search for a central to connect too
       central->searchCentral();

@@ -1,14 +1,11 @@
 #ifndef MY_CONFIG_H
 #define MY_CONFIG_H
 
-#include <IniFile.h>
-
-#include <string>
+#include "Arduino.h"
 
 class Config {
 
   private:
-    IniFile *config;
 
     static const int bufferLen = 128;
     char buffer[bufferLen];
@@ -16,7 +13,7 @@ class Config {
   public:
     Config();
     ~Config();
-    std::string getField(char *section, char *field);
+    String getField(char *section, char *field);
 
 };
 

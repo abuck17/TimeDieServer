@@ -1,12 +1,9 @@
 #ifndef MY_STORAGE_H
 #define MY_STORAGE_H
 
-#include "SPI.h"
-#include "SD.h"
+#include "Arduino.h"
 
 #include "Accelerometer.h"
-
-#include <string>
 
 class Storage {
 
@@ -15,7 +12,7 @@ class Storage {
 
   public:
     Storage(int storagePin);
-    bool isDataStored(std::string ID);
+    bool isDataStored(String ID);
     bool wasConnectionDropped();
     void storeData(Accelerometer *accelerometer);
     
