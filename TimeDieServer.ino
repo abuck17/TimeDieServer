@@ -1,9 +1,9 @@
-#include "Accelerometer.h"
-#include "Button.h"
-#include "Config.h"
-#include "Central.h"
-#include "LED.h"
-#include "Storage.h"
+#include "src/Accelerometer.h"
+#include "src/Button.h"
+#include "src/Config.h"
+#include "src/Central.h"
+#include "src/LED.h"
+#include "src/Storage.h"
 
 Config *config;
 Button *bluetoothSyncButton;
@@ -18,9 +18,6 @@ void setup() {
 }
 
 void loop() {
-
-  Serial.println(config->getField("BluetoothSyncButton","Pin").toInt());
-  
   if (status < 0) {
     externalLED->pulse(100, 0, 0, 0.10);
   } else {

@@ -3,13 +3,9 @@
 
 #include "Arduino.h"
 
-#include "IniFile.h"
-
-
 class Config {
 
   private:
-    IniFile *config;
 
     static const int bufferLen = 128;
     char buffer[bufferLen];
