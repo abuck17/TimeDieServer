@@ -21,7 +21,7 @@ Config::~Config() {
   delete config;  
 }
 
-std::string Config::getField(char *section, char *key) {
+String Config::getField(char *section, char *key) {
 
   if (config->getValue(section, key, buffer, bufferLen)) {
     return buffer;

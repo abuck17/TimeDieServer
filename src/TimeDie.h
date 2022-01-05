@@ -1,13 +1,13 @@
 #ifndef MY_TIMEDIE_H
 #define MY_TIMEDIE_H
 
+#include "Arduino.h"
+
 #include "Config.h"
 #include "Central.h"
 #include "Accelerometer.h"
 #include "Button.h"
 #include "Storage.h"
-
-#include <string>
 
 class TimeDie {
 

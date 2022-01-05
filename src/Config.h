@@ -1,9 +1,10 @@
 #ifndef MY_CONFIG_H
 #define MY_CONFIG_H
 
-#include <IniFile.h>
+#include "Arduino.h"
 
-#include <string>
+#include "IniFile.h"
+
 
 class Config {
 
@@ -16,7 +17,7 @@ class Config {
   public:
     Config();
     ~Config();
-    std::string getField(char *section, char *field);
+    String getField(char *section, char *field);
 
 };
 

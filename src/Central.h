@@ -1,10 +1,10 @@
 #ifndef MY_CENTRAL_H
 #define MY_CENTRAL_H
 
+#include "Arduino.h"
+
 #include "Storage.h"
 #include "Accelerometer.h"
-
-#include <string>
 
 class Central {
     
@@ -12,7 +12,7 @@ class Central {
     Central();
     void searchCentral();
     bool isConnected();
-    std::string getAddress();
+    String getAddress();
     void sendData(Storage *storage);
     void sendData(Accelerometer *accelerometer);
     
