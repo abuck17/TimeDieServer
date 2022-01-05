@@ -5,6 +5,8 @@
 #include "src/LED.h"
 #include "src/Storage.h"
 
+#include "ArduinoJson.h"
+
 Config *config;
 Button *bluetoothSyncButton;
 LED *externalLED;
