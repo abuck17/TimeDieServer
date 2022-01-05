@@ -1,3 +1,6 @@
 [submodule "include/Arduino_LSM9DS1"]
 	path = include/Arduino_LSM9DS1
 	url = https://github.com/arduino-libraries/Arduino_LSM9DS1.git
+[submodule "include/ArduinoBLE"]
+	path = include/ArduinoBLE
+	url = https://github.com/arduino-libraries/ArduinoBLE.git
