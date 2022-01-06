@@ -3,7 +3,6 @@
 
 #include "Arduino.h"
 
-#include "Config.h"
 #include "Central.h"
 #include "Accelerometer.h"
 #include "Button.h"
@@ -12,8 +11,6 @@
 class TimeDie {
 
   private:
-
-    Config *config;
 
     Central *central;
 

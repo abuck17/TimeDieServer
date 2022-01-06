@@ -1,20 +1,15 @@
 #include "src/Accelerometer.h"
 #include "src/Button.h"
-#include "src/Config.h"
 #include "src/Central.h"
 #include "src/LED.h"
 #include "src/Storage.h"
 
-#include "ArduinoJson.h"
-
-Config *config;
 Button *bluetoothSyncButton;
 LED *externalLED;
 int status = 0;
 
 void setup() {
   Serial.begin(9600);
-  config = new Config();
   bluetoothSyncButton = new Button(9);
   externalLED = new LED(3, 5, 7);
 }

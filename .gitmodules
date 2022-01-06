@@ -4,6 +4,3 @@
 [submodule "include/ArduinoBLE"]
 	path = include/ArduinoBLE
 	url = https://github.com/arduino-libraries/ArduinoBLE.git
-[submodule "include/ArduinoJson"]
-	path = include/ArduinoJson
-	url = https://github.com/bblanchon/ArduinoJson.git

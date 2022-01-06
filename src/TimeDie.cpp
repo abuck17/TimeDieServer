@@ -2,32 +2,9 @@
 
 TimeDie::TimeDie() {
 
-  // Configuration Definitions
-  config = new Config();
-
-  // Central or Phone
-  central = new Central();
-
-  // Accelerometer Sensor
-  accelerometer = new Accelerometer();
-
-  // Bluetooth Sync Button
-  button = new Button(config->getField("BluetoothSyncButton","Pin").toInt());
-  
-  // SD Card
-  storage = new Storage(config->getField("SDCard","Pin").toInt());
-
 }
 
 TimeDie::~TimeDie() {
-
-  delete config;
-
-  delete central;
-    
-  delete accelerometer;
-  delete button;
-  delete storage;
 
 }
 
