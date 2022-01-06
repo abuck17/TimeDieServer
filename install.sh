@@ -3,6 +3,8 @@ exit
 
 sudo apt install make
 
+sudo apt install jq 
+
 sudo apt install curl
 curl -fsSL http://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
