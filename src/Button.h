@@ -10,12 +10,15 @@ class Button {
   
     int startTime;
     int pressedTime;
+
+    int durationThreshold;
   
     int getState();
     
   public:
     Button(int buttonPin);
-    bool isPressed(int durationThreshold);
+    void setPressTime(int duration);
+    bool isPressed();
     
 };
 

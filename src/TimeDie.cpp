@@ -13,7 +13,7 @@ void TimeDie::operate() {
   while (true) {
 
     // If Bluetooth search is requested
-    if (button->isPressed(3000)) {
+    if (button->isPressed()) {
       
       // Search for a central to connect too
       central->searchCentral();

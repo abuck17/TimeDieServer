@@ -12,7 +12,11 @@ int Button::getState() {
   return digitalRead(pinNumber);
 }
 
-bool Button::isPressed(int durationThreshold) {
+void Button::setPressTime(int duration) {
+  durationThreshold = duration;
+}
+
+bool Button::isPressed() {
 
   if (getState() == LOW) {
     
@@ -21,15 +25,15 @@ bool Button::isPressed(int durationThreshold) {
     while (true) {
       pressedTime = millis() - startTime;
       if (pressedTime >= durationThreshold) {
-        Serial.println("Button::isPressed -> True");
+        //Serial.println("Button::isPressed -> True");
         return true;
       } else if (getState() == HIGH) {
-        Serial.println("Button::isPressed -> False");
+        //Serial.println("Button::isPressed -> False");
         return false;
       }
     }
   } else {
-    Serial.println("Button::isPressed -> False");
+    //Serial.println("Button::isPressed -> False");
     return false;
   }
 }

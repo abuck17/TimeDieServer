@@ -7,7 +7,7 @@ BUILD=build
 default: lint all flash clean
 
 lint:
-	cpplint --extensions=ino --filter=-legal/copyright TimeDieServer.ino
+	cpplint --extensions=ino,cpp,h --filter=-legal/copyright TimeDieServer.ino src/*
 
 all:
 	arduino-cli compile --libraries ./include/Arduino_LSM9DS1,./include/ArduinoBLE \

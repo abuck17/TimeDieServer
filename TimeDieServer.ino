@@ -4,25 +4,47 @@
 #include "src/LED.h"
 #include "src/Storage.h"
 
+// Common
+int baud = 9600;
+
+// Button
 Button *bluetoothSyncButton;
+int buttonPin = 9;
+int buttonPressTime = 3000;  // Milliseconds
+
+// Central
+Central *nano33ble;
+int centralSearchTimeout = 10000;  // Milliseconds
+
+// LED
 LED *externalLED;
-int status = 0;
+int ledPin[3] = {3, 5, 7};
+int ledPowerRGB[3] = {0, 100, 0};
+int ledBluetoothRGB[3] = {0, 0, 100};
+double ledBluetoothhRate = 0.75;
+int ledErrorRGB[3] = {100, 0, 0};
+double ledErrorRate = 0.25;
 
 void setup() {
-  Serial.begin(9600);
-  bluetoothSyncButton = new Button(9);
-  externalLED = new LED(3, 5, 7);
+  Serial.begin(baud);
+  // Initalize components
+  bluetoothSyncButton = new Button(buttonPin);
+  bluetoothSyncButton->setPressTime(buttonPressTime);
+
+  nano33ble = new Central();
+
+  externalLED = new LED(ledPin[0], ledPin[1], ledPin[2]);
+  externalLED->setPower(ledPowerRGB);
+  externalLED->setBluetooth(ledBluetoothRGB, ledBluetoothhRate);
+  externalLED->setError(ledErrorRGB, ledErrorRate);
 }
 
 void loop() {
-  if (status < 0) {
-    externalLED->pulse(100, 0, 0, 0.10);
-  } else {
-    // Set the LED to be soild green indicating that power is one
-    externalLED->solid(0, 50, 0);
-    if (bluetoothSyncButton->isPressed(3000)) {
-      // Pulse LED blue until button is no longer being pressed
-      externalLED->pulse(0, 0, 100, 0.50, bluetoothSyncButton);
-    }
+  // Set the LED to be soild green indicating that power is one
+  externalLED->displayPower();
+
+  if (bluetoothSyncButton->isPressed()) {
+    // Pulse LED blue until button is no longer being pressed
+    externalLED->displayBluetooth();
   }
 }
