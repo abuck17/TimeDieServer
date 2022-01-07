@@ -1,7 +1,8 @@
 #ifndef SRC_BUTTON_H_
 #define SRC_BUTTON_H_
 
-#include <Arduino.h>
+#include "Arduino.h"
+#include "ArduinoBLE.h"
 
 class Button {
  private:

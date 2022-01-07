@@ -13,4 +13,7 @@ sudo chown root /usr/local/bin/arduino-cli
 sudo chgrp root /usr/local/bin/arduino-cli
 rm -rf ./bin
 
+arduino-cli lib install ArduinoBLE
+arduino-cli lib install Arduino_LSM9DS1
+
 pip install cpplint

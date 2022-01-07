@@ -14,7 +14,7 @@ int buttonPressTime = 3000;  // Milliseconds
 
 // Central
 Central *nano33ble;
-int centralSearchTimeout = 30000;  // Milliseconds
+int centralSearchTimeout = 60000;  // Milliseconds
 int centralConnectTime = 1500;  // Milliseconds
 
 // LED

@@ -9,6 +9,9 @@
 
 class Central {
  private:
+    BLEService *centralService;
+    BLEFloatCharacteristic *centralValueChar;
+
     int startTime;
     int takenTime;
 
