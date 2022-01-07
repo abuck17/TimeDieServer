@@ -12,16 +12,18 @@ class LED {
     int blueNumber;
 
     int* powerRGB;
-
     int* bluetoothRGB;
-    double bluetoothRate;
-
     int* errorRGB;
-    double errorRate;
 
     void solid(int red, int green, int blue);
-    void pulse(int red, int green, int blue, double rate);
-    void pulseLogic(int value, bool direction, int limit);
+    void pulse(int red, int green, int blue);
+    void pulseLogic(int *value, bool *direction, int limit);
+
+    int redValue = 0;
+    int greenValue = 0;
+    int blueValue = 0;
+
+    bool direction = true;  // True: Ascending | False: Descending
 
  public:
     LED(int pin, int greenPin, int bluePin);
@@ -29,10 +31,10 @@ class LED {
     void setPower(int* RGB);
     void displayPower();
 
-    void setBluetooth(int* RGB, double rate);
+    void setBluetooth(int* RGB);
     void displayBluetooth();
 
-    void setError(int* RGB, double rate);
+    void setError(int* RGB);
     void displayError();
 };
 

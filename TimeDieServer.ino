@@ -14,16 +14,15 @@ int buttonPressTime = 3000;  // Milliseconds
 
 // Central
 Central *nano33ble;
-int centralSearchTimeout = 10000;  // Milliseconds
+int centralSearchTimeout = 30000;  // Milliseconds
+int centralConnectTime = 1500;  // Milliseconds
 
 // LED
 LED *externalLED;
 int ledPin[3] = {3, 5, 7};
-int ledPowerRGB[3] = {0, 100, 0};
-int ledBluetoothRGB[3] = {0, 0, 100};
-double ledBluetoothhRate = 0.75;
-int ledErrorRGB[3] = {100, 0, 0};
-double ledErrorRate = 0.25;
+int redRGB[3]   = {100,   0,   0};
+int greenRGB[3] = {  0, 100,   0};
+int blueRGB[3]  = {  0,   0, 100};
 
 void setup() {
   Serial.begin(baud);
@@ -32,11 +31,12 @@ void setup() {
   bluetoothSyncButton->setPressTime(buttonPressTime);
 
   nano33ble = new Central();
+  nano33ble->setThresholds(centralSearchTimeout, centralConnectTime);
 
   externalLED = new LED(ledPin[0], ledPin[1], ledPin[2]);
-  externalLED->setPower(ledPowerRGB);
-  externalLED->setBluetooth(ledBluetoothRGB, ledBluetoothhRate);
-  externalLED->setError(ledErrorRGB, ledErrorRate);
+  externalLED->setPower(greenRGB);
+  externalLED->setBluetooth(blueRGB);
+  externalLED->setError(redRGB);
 }
 
 void loop() {
@@ -44,7 +44,6 @@ void loop() {
   externalLED->displayPower();
 
   if (bluetoothSyncButton->isPressed()) {
-    // Pulse LED blue until button is no longer being pressed
-    externalLED->displayBluetooth();
+    nano33ble->searchCentral(externalLED);
   }
 }

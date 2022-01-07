@@ -11,7 +11,7 @@ void TimeDie::operate() {
     // If Bluetooth search is requested
     if (button->isPressed()) {
       // Search for a central to connect too
-      central->searchCentral();
+      Serial.println("");
 
     // If connected to a central
     } else if (central->isConnected()) {

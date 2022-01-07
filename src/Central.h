@@ -3,13 +3,24 @@
 
 #include "Arduino.h"
 
-#include "Storage.h"
 #include "Accelerometer.h"
+#include "LED.h"
+#include "Storage.h"
 
 class Central {
+ private:
+    int startTime;
+    int takenTime;
+
+    int durationThresholdSearch;
+    int durationThresholdConnect;
+
+    bool connected = false;
+
  public:
     Central();
-    void searchCentral();
+    void setThresholds(int searchTime, int connectTime);
+    void searchCentral(LED *led);
     bool isConnected();
     String getAddress();
     void sendData(Storage *storage);

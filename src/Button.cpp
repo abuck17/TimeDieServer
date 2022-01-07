@@ -20,15 +20,15 @@ bool Button::isPressed() {
     while (true) {
       pressedTime = millis() - startTime;
       if (pressedTime >= durationThreshold) {
-        // Serial.println("Button::isPressed -> True");
+        Serial.println("Button::isPressed -> True");
         return true;
       } else if (getState() == HIGH) {
-        // Serial.println("Button::isPressed -> False");
+        Serial.println("Button::isPressed -> False (Below Threshold)");
         return false;
       }
     }
   } else {
-    // Serial.println("Button::isPressed -> False");
+    Serial.println("Button::isPressed -> False");
     return false;
   }
 }
