@@ -1,21 +1,19 @@
-#ifndef MY_STORAGE_H
-#define MY_STORAGE_H
+#ifndef SRC_STORAGE_H_
+#define SRC_STORAGE_H_
 
 #include "Arduino.h"
 
 #include "Accelerometer.h"
 
 class Storage {
-
-  private:
+ private:
     int pinNumber;
 
-  public:
-    Storage(int storagePin);
+ public:
+    explicit Storage(int storagePin);
     bool isDataStored(String ID);
     bool wasConnectionDropped();
     void storeData(Accelerometer *accelerometer);
-    
 };
 
-#endif
+#endif  // SRC_STORAGE_H_

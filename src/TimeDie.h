@@ -1,5 +1,5 @@
-#ifndef MY_TIMEDIE_H
-#define MY_TIMEDIE_H
+#ifndef SRC_TIMEDIE_H_
+#define SRC_TIMEDIE_H_
 
 #include "Arduino.h"
 
@@ -9,9 +9,7 @@
 #include "Storage.h"
 
 class TimeDie {
-
-  private:
-
+ private:
     Central *central;
 
     Accelerometer *accelerometer;
@@ -23,11 +21,10 @@ class TimeDie {
     void searchCentral();
     void sendData();
 
-  public:
+ public:
     TimeDie();
     ~TimeDie();
     void operate();
-    
 };
 
-#endif
+#endif  // SRC_TIMEDIE_H_

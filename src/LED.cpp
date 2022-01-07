@@ -1,7 +1,6 @@
 #include "LED.h"
 
 LED::LED(int redPin, int greenPin, int bluePin) {
-
   redNumber = redPin;
   greenNumber = greenPin;
   blueNumber = bluePin;
@@ -11,10 +10,9 @@ LED::LED(int redPin, int greenPin, int bluePin) {
 
   pinMode(greenNumber, OUTPUT);
   digitalWrite(greenNumber, LOW);
-    
-  pinMode(blueNumber, OUTPUT); 
-  digitalWrite(blueNumber, LOW);
 
+  pinMode(blueNumber, OUTPUT);
+  digitalWrite(blueNumber, LOW);
 }
 
 void LED::setPower(int* RGB) {
@@ -35,12 +33,12 @@ void LED::displayBluetooth() {
 }
 
 void LED::setError(int* RGB, double rate) {
-  errorRGB = RGB;  	
+  errorRGB = RGB;
   errorRate = rate;
 }
 
 void LED::displayError() {
-  pulse(errorRGB[0], errorRGB[1], errorRGB[2], errorRate);	
+  pulse(errorRGB[0], errorRGB[1], errorRGB[2], errorRate);
 }
 
 void LED::solid(int red, int green, int blue) {
@@ -50,13 +48,11 @@ void LED::solid(int red, int green, int blue) {
 }
 
 void LED::pulse(int red, int green, int blue, double rate) {
-
   // Currently can only pulse one of the three main colors on the RGB spectrum
-  if ( (red != 0 && blue != 0) || (red != 0 && green != 0) || (blue != 0 && green != 0) ) {
-    Serial.println("Can only pulse LED for only one of the three main RGB colors");
-    Serial.println(red);
-    Serial.println(green);
-    Serial.println(blue);
+  if ( (red != 0 && blue != 0) || (red != 0 && green != 0) || (blue != 0
+      && green != 0) ) {
+    Serial.println(
+      "Can only pulse LED for only one of the three main RGB colors");
     while (true) { }
   }
 
@@ -64,10 +60,9 @@ void LED::pulse(int red, int green, int blue, double rate) {
   int greenValue = 0;
   int blueValue = 0;
 
-  bool direction = true; // True: Ascending | False: Descending
+  bool direction = true;  // True: Ascending | False: Descending
 
   while (true) {
-    
     analogWrite(redNumber, redValue);
     analogWrite(greenNumber, greenValue);
     analogWrite(blueNumber, blueValue);
@@ -83,16 +78,12 @@ void LED::pulse(int red, int green, int blue, double rate) {
       analogWrite(blueNumber, blueValue);
       Serial.println(blueValue);
     }
-    
 
     delay(rate * 10);
-
   }
-  
 }
 
-void LED::pulseLogic(int &value, bool &direction, int limit) {
-
+void LED::pulseLogic(int value, bool direction, int limit) {
   if (value < 1) {
     direction = true;
   } else if (value > limit) {
@@ -104,6 +95,4 @@ void LED::pulseLogic(int &value, bool &direction, int limit) {
   } else {
     value -= 1;
   }
-
-  
 }

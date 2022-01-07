@@ -1,25 +1,23 @@
-#ifndef MY_BUTTON_H
-#define MY_BUTTON_H
+#ifndef SRC_BUTTON_H_
+#define SRC_BUTTON_H_
 
 #include <Arduino.h>
 
 class Button {
-
-  private:
+ private:
     int pinNumber;
-  
+
     int startTime;
     int pressedTime;
 
     int durationThreshold;
-  
+
     int getState();
-    
-  public:
-    Button(int buttonPin);
+
+ public:
+    explicit Button(int buttonPin);
     void setPressTime(int duration);
     bool isPressed();
-    
 };
 
-#endif
+#endif  // SRC_BUTTON_H_

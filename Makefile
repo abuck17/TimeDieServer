@@ -17,4 +17,4 @@ flash:
 	arduino-cli upload --fqbn $(BOARD) -p $(PORT) --input-dir $(BUILD)
 
 clean:
-	rm -r build
+	rm -rf build

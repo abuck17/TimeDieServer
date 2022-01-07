@@ -1,5 +1,5 @@
-#ifndef MY_CENTRAL_H
-#define MY_CENTRAL_H
+#ifndef SRC_CENTRAL_H_
+#define SRC_CENTRAL_H_
 
 #include "Arduino.h"
 
@@ -7,15 +7,13 @@
 #include "Accelerometer.h"
 
 class Central {
-    
-  public:
+ public:
     Central();
     void searchCentral();
     bool isConnected();
     String getAddress();
     void sendData(Storage *storage);
     void sendData(Accelerometer *accelerometer);
-    
 };
 
-#endif
+#endif  // SRC_CENTRAL_H_
