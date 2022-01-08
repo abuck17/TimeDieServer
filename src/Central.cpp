@@ -4,8 +4,14 @@ Central::Central() {
   centralService = new BLEService("1101");
   centralValueChar = new BLEFloatCharacteristic("2101", BLERead | BLENotify);
 
+  if (!BLE.begin()) {
+    Serial.println("Central::Central -> BLE Failed");
+    while (true) { }
+  }
+
   // WHat is happening here ... need to look into
-  BLE.setLocalName("PooPooPeePee");
+  BLE.setDeviceName("Time Die");
+  BLE.setLocalName("TimeDieServer");
   BLE.setAdvertisedService(*centralService);
   centralService->addCharacteristic(*centralValueChar);
   BLE.addService(*centralService);
@@ -17,8 +23,6 @@ void Central::setThresholds(int searchTime, int connectTime) {
 }
 
 void Central::searchCentral(LED *led) {
-  Serial.println("Central::searchCentral");
-
   BLE.advertise();
 
   startTime = millis();
@@ -26,21 +30,25 @@ void Central::searchCentral(LED *led) {
     takenTime = millis() - startTime;
     Serial.println(takenTime);
     if (takenTime >= durationThresholdSearch) {
-      connected = true;
-      BLE.stopAdvertise();
-      break;
+      return;
     } else {
       led->displayBluetooth();
 
-      BLEDevice central = BLE.central();
+      central = BLE.central();
+      if (central) {
+        Serial.print("Connected to central ");
+        Serial.println(central.address());
+        break;
+      }
 
-      // Add Search Logic
       delay(10);
     }
   }
 
+  BLE.stopAdvertise();
+
   startTime = millis();
-  while (connected) {
+  while (central.connected()) {
     takenTime = millis() - startTime;
     if (takenTime >= durationThresholdConnect) {
       break;
@@ -52,6 +60,7 @@ void Central::searchCentral(LED *led) {
 }
 
 bool Central::isConnected() {
+  return central.connected();
 }
 
 String Central::getAddress() {
