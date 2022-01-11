@@ -67,7 +67,6 @@ void LED::pulse(int red, int green, int blue) {
   } else if (blue != 0) {
     pulseLogic(&blueValue, &direction, blue);
     analogWrite(blueNumber, blueValue);
-    Serial.println(blueValue);
   }
 }
 

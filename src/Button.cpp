@@ -28,7 +28,7 @@ bool Button::isPressed() {
       }
     }
   } else {
-    Serial.println("Button::isPressed -> False");
+    // Serial.println("Button::isPressed -> False");
     return false;
   }
 }

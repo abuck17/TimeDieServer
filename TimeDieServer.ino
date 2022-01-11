@@ -26,6 +26,7 @@ int blueRGB[3]  = {  0,   0, 100};
 
 void setup() {
   Serial.begin(baud);
+
   // Initalize components
   bluetoothSyncButton = new Button(buttonPin);
   bluetoothSyncButton->setPressTime(buttonPressTime);
@@ -45,5 +46,7 @@ void loop() {
 
   if (bluetoothSyncButton->isPressed()) {
     nano33ble->searchCentral(externalLED);
+  } else if (nano33ble->isConnected()) {
+    Serial.println("TimeDieServer.ino -> Connected");
   }
 }

@@ -11,14 +11,13 @@ class Central {
  private:
     BLEService *centralService;
     BLEFloatCharacteristic *centralValueChar;
+    BLEDevice central;
 
     int startTime;
     int takenTime;
 
     int durationThresholdSearch;
     int durationThresholdConnect;
-
-    bool connected = false;
 
  public:
     Central();
