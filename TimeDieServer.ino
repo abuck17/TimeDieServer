@@ -4,8 +4,13 @@
 #include "src/LED.h"
 #include "src/Storage.h"
 
+#include <Arduino_LSM9DS1.h>
+
 // Common
 int baud = 9600;
+
+// Accelerometer
+Accelerometer *sensor;
 
 // Button
 Button *bluetoothSyncButton;
@@ -41,12 +46,10 @@ void setup() {
 }
 
 void loop() {
-  // Set the LED to be soild green indicating that power is one
   externalLED->displayPower();
-
   if (bluetoothSyncButton->isPressed()) {
     nano33ble->searchCentral(externalLED);
   } else if (nano33ble->isConnected()) {
-    Serial.println("TimeDieServer.ino -> Connected");
+    nano33ble->sendData(sensor);
   }
 }

@@ -9,7 +9,7 @@ Central::Central() {
     while (true) { }
   }
 
-  // WHat is happening here ... need to look into
+  // What is happening here ... need to look into
   BLE.setDeviceName("Time Die");
   BLE.setLocalName("TimeDieServer");
   BLE.setAdvertisedService(*centralService);
@@ -23,21 +23,22 @@ void Central::setThresholds(int searchTime, int connectTime) {
 }
 
 void Central::searchCentral(LED *led) {
+  Serial.println("Central::searchCentral -> Starting Advertise");
   BLE.advertise();
 
   startTime = millis();
   while (true) {
     takenTime = millis() - startTime;
-    Serial.println(takenTime);
     if (takenTime >= durationThresholdSearch) {
+      Serial.println("Central::searchCentral -> Failed: Stopping Advertise");
+      BLE.stopAdvertise();
       return;
     } else {
       led->displayBluetooth();
 
       central = BLE.central();
       if (central) {
-        Serial.print("Connected to central ");
-        Serial.println(central.address());
+        Serial.println("Central::searchCentral -> Connected to Central");
         break;
       }
 
@@ -45,6 +46,7 @@ void Central::searchCentral(LED *led) {
     }
   }
 
+  Serial.println("Central::searchCentral -> Success: Stopping Advertise");
   BLE.stopAdvertise();
 
   startTime = millis();
@@ -64,10 +66,15 @@ bool Central::isConnected() {
 }
 
 String Central::getAddress() {
+  return central.address();
 }
 
 void Central::sendData(Storage *storage) {
 }
 
 void Central::sendData(Accelerometer *accelerometer) {
+  accelerometer->updateData();
+  Serial.print("Data: ");
+  Serial.println(accelerometer->getXData());
+  centralValueChar->writeValue(accelerometer->getXData());
 }

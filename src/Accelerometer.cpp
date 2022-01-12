@@ -7,11 +7,15 @@ Accelerometer::Accelerometer() {
   }
 }
 
+Accelerometer::~Accelerometer() {
+  IMU.end();
+}
+
 // Return if data was successfully updated
-bool Accelerometer::updateData() {
+void Accelerometer::updateData() {
   // Read accelerometer data if available
   if (IMU.accelerationAvailable()) {
-    return IMU.readAcceleration(x, y, z);
+    IMU.readAcceleration(x, y, z);
   } else {
     Serial.println("IMU accelerometer not available!");
     while (true) { }

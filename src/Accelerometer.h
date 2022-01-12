@@ -12,7 +12,8 @@ class Accelerometer {
 
  public:
     Accelerometer();
-    bool updateData();
+    ~Accelerometer();
+    void updateData();
     float getXData();
     float getYData();
     float getZData();
